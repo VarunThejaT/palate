@@ -1,2 +1,2 @@
-# palate
+# Palate
 Amplitude Hackathon project
