@@ -1,0 +1,5 @@
+openai
+tiktoken
+pydub
+newspaper3k
+ffmpeg
