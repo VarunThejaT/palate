@@ -1,0 +1,2 @@
+# palate
+Amplitude Hackathon project
