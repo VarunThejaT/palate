@@ -1,0 +1,16 @@
+{
+    "voices": [
+        {
+            "name": "trump",
+            "model": "trump.pth"
+        },
+        {
+            "name": "obiwan",
+            "model": "obiwan.pth"
+        },
+        {
+            "name": "david",
+            "model": "david.pth"
+        }
+    ]
+}
