@@ -5,6 +5,9 @@ from typing import Dict
 import time
 import json
 import torch
+import boto3
+import pydub
+
 
 from flask import Flask, request
 
@@ -19,9 +22,17 @@ def process_data():
         language = data['language']
         text = data['text']
 
-        output_dir = output_input.get()
+        wav_output_dir = output_input.get()
+        mp3_output_dir = output_input.get()
         voice = reader
-        synthesize(text, voice, output_dir)
+        synthesize(text, voice, wav_output_dir)
+
+        sound = pydub.AudioSegment.from_wav(wav_output_dir)
+        sound.export(mp3_output_dir, format="mp3")
+
+        s3 = boto3.resource('s3')
+        BUCKET = "palate-output"
+        s3.Bucket(BUCKET).upload_file(mp3_output_dir, "david.mp3")
 
         print("Reader:", reader)
         print("Language:", language)
